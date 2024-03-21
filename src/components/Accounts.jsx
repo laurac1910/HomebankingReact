@@ -90,7 +90,7 @@ const Accounts = ({ account }) => {
           <span className="mr-5 bg-gris p-1 rounded-md text-white font-medium">
             Balance:
           </span>
-          <span className="text-l font-bold text-gray-700 mr-32 border-2 p-1 rounded-md border-gris ml-2">
+          <span className="text-l font-bold text-gray-700 mr-32 border-2 p-1 rounded-md border-gris ml-2 text-right">
             {account.balanceInUSD}
           </span>
         </p>

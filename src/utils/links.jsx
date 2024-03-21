@@ -1,4 +1,7 @@
+
+
 export const LinksNav = [
+
     {
         href:"/ClientPage",
         name:"Client",
@@ -21,7 +24,7 @@ export const LinksNav = [
     },
     {
         href:"/AccountPage",
-        name:"Account",
+        name:"Accounts",
          image:<svg
         xmlns="http://www.w3.org/2000/svg"
         className="h-5 w-5"

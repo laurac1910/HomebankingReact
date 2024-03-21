@@ -3,10 +3,14 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
+    'node_modules/flowbite-react/lib/esm/**/*.js'
   ],
   theme: {
     extend: {
       colors:{
+        "azul3":"#0AFCE6",
+        "azul2":"#0CCDFB",
+        "azul1":"#01E9EF",
         "azul-claro":"#74bedc",
         "azul-marca":"#14b0dd ",
         "azul":"#048acc ",
@@ -20,5 +24,8 @@ export default {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('flowbite/plugin')
+  ]
+
 }

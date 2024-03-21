@@ -1,18 +1,42 @@
 import React, { useState } from "react";
+import goldImage from "../assets/gold.png";
+import silverImage from "../assets/silver.png";
+import titaniumImage from "../assets/titanium.png";
 
-const Cards = ({ card }) => {
+const Cards = ({ card ,onDeleteCard }) => {
   const [showNumbers, setShowNumbers] = useState(false);
 
   const handleClick = () => {
     setShowNumbers(!showNumbers);
   };
+  const handleDelete = () => {
+    onDeleteCard(card.id); };
+
+  const getCardBackground = (cardColor) => {
+    switch (cardColor.toLowerCase()) {
+      case "gold":
+        return goldImage;
+      case "silver":
+        return silverImage;
+      case "titanium":
+        return titaniumImage;
+      default:
+        return ""; 
+    }
+  };
+
+  const cardBackground = getCardBackground(card.cardColor);
 
   return (
     <article className="mt-10 mb-20">
+      
       <div
-        className="relative bg-white py-6 px-6 rounded-3xl w-75% my-4 shadow-xl "
+        className="relative py-6 px-6 rounded-3xl my-4 shadow-xl"
         onClick={handleClick}
       >
+           <button onClick={handleDelete} className="absolute top-0 right-0 bg-red-500 text-white p-1 rounded-full m-2">
+          Delete
+        </button>
         <div className=" text-white flex items-center absolute rounded-full shadow-xl left-4 -top-6">
           <svg
             width="45px"
@@ -66,19 +90,29 @@ const Cards = ({ card }) => {
             </g>
           </svg>
         </div>
-        <div className="bg-white min-h-[40vh] flex justify-center items-center">
+        <div className="min-h-[40vh] flex justify-center items-center" >
           <div className="space-y-5">
-            <div className="w-96 h-56 m-auto bg-red-100 rounded-xl relative text-white shadow-2xl transition-transform transform hover:scale-110">
-              <img
-                className="relative object-cover w-full h-full rounded-xl"
-                src="https://i.imgur.com/kGkSg1v.png"
-              />
-
+            <div
+              className={`w-96 h-56 m-auto rounded-xl relative shadow-2xl transition-transform transform hover:scale-110 ${
+                card.cardColor.toLowerCase() === "titanium"
+                  ? "text-white"
+                  : ""
+              }`}
+              style={{
+                backgroundImage: `url(${cardBackground})`,
+                backgroundSize: "143%",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+            >
+              <div className="w-full h-full rounded-xl" />
               <div className="w-95% px-2 absolute top-8 ">
                 <div className="flex justify-between ">
                   <div className="">
-                    <p className="font-light">Name</p>
-                    <p className="font-medium tracking-widest mr-56">Melba</p>
+                    <p className="font-light mr-64">Name</p>
+                    <p className="font-medium tracking-widest ">
+                      {card.clientName} {card.clientLastName}
+                    </p>
                   </div>
 
                   <p className="font-medium tracking-widest mr-4">

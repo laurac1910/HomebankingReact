@@ -3,7 +3,19 @@ import Anchor from "./Anchor";
 import { LinksNav } from "../utils/links.jsx";
 import "../assets/anchor.css";
 import { linksForms } from "../utils/linksForms.jsx";
-const SideBar = () => {
+import { useDispatch } from "react-redux";
+import authActions from "../redux/actions/authActions";
+
+
+const SideBar = (props) => {
+  const dispatch = useDispatch();
+ 
+
+  const handleLogout = () => {
+    dispatch(authActions.logout());
+    props.onLogout();
+   window.location.href = "/";
+  }
   return (
     <aside className="sidebar">
       <div>
@@ -44,7 +56,7 @@ const SideBar = () => {
       </div>
 
       <div className="logout-btn">
-        <button>
+        <button onClick={handleLogout}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="logout-icon"

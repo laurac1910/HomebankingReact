@@ -3,7 +3,7 @@ import Accounts from "./Accounts";
 import Cards from "./Cards";
 import Loans from "./Loans";
 
-const Client = ({ name, accounts, cards, loans }) => {
+const Client = ({ name, accounts, cards, loans, onDeleteCard }) => {
   return (
     <Fragment>
       <div>
@@ -60,10 +60,10 @@ const Client = ({ name, accounts, cards, loans }) => {
       </div>
       <div>
         {cards.map((card) => (
-          <Cards key={card.id} card={card} />
+          <Cards key={card.id} card={card} onDeleteCard={onDeleteCard} />
         ))}
       </div>
-      <div  >
+      <div>
         {loans.map((loan) => (
           <Loans key={loan.id} loan={loan} />
         ))}

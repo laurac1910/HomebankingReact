@@ -1,44 +1,66 @@
-import React, { useEffect } from "react";
-import axios from "axios";
-import { useState } from "react";
 import Client from "../components/Client";
-import poster from "../assets/poster.png";
-import "../assets/clientPage.css";
-import { Link } from "react-router-dom";
+import DataBase from "../utils/DataBase";
+import React from "react";
+import { Carousel } from "flowbite-react";
+import carrousel3 from "../assets/carrousel3.png";
+import carrousel4 from "../assets/carrousel4.png";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import actions from "../redux/actions/authActions";
+import { useNavigate } from "react-router-dom";
 
 const ClientPage = () => {
-  const [client, setClients] = useState([]);
-  useEffect(() => {
-    axios("http://localhost:8080/api/clients/1")
-      .then((response) => {
-        setClients(response.data);
-        console.log(response.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+  const userData = DataBase();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  function Component() {
+    return (
+      <div className="h-56 sm:h-64 xl:h-80 2xl:h-96 lg:w-[69%] relative lg:left-[25%] mt-5">
+        <Carousel pauseOnHover>
+          <img src={carrousel3} alt="..." className="rounded-lg" />
+          <img src={carrousel4} alt="..." className="rounded-lg" />
+        </Carousel>
+      </div>
+    );
+  }
+
+  const handleDeleteCard = async (cardId) => {
+    try {
+      const token = localStorage.getItem("token");
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      await axios.delete(`/api/cards/${cardId}`, config);
+      dispatch(actions.deleteCard());
+      navigate("/ClientPage");
+      console.log("Card deleted");
+    } catch (error) {
+      console.error("Error deleting card:", error);
+    }
+  };
+  
 
   return (
     <React.Fragment>
+      <Component />
       <main>
-        <div className="lg:w-[60%] relative lg:left-[30%] py-6 px-6 rounded-xl border border-gray-200 bg-white mt-10 flex flex-wrap gap-10 mb-10">
-          {client ? (
+        <div className="lg:w-[66%] relative lg:left-[25%] py-6 px-6 rounded-xl border border-gray-200 bg-white mt-10 flex flex-wrap gap-10 mb-10">
+          {userData ? (
             <Client
-              key={client.id}
-              name={`${client.firstName} ${client.lastName}`}
-              email={client.email}
-              accounts={client.accounts || []}
-              cards={client.cards || []}
-              loans={client.loans || []}
+              key={userData.id}
+              name={`${userData.firstName} ${userData.lastName}`}
+              email={userData.email}
+              accounts={userData.accounts || []}
+              cards={userData.cards || []}
+              loans={userData.loans || []}
+              onDeleteCard={handleDeleteCard}
             />
           ) : (
             <p>Client not found</p>
           )}
-
-          <Link to={"/CardForm"}>
-            <img src={poster} alt="poster" className="poster" />
-          </Link>
         </div>
       </main>
     </React.Fragment>

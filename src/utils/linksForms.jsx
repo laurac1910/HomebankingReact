@@ -4,10 +4,10 @@ export const linksForms = [
     name: "Get a new Card",
     image: (
       <svg
-        className="mr-1"
+      className="mr-1 rigth-1"
         width="20px"
         height="20px"
-        viewBox="0 0 24 24"
+        viewBox="-2.4 -2.4 28.80 28.80"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -20,8 +20,8 @@ export const linksForms = [
         <g id="SVGRepo_iconCarrier">
           {" "}
           <path
-            d="M11 19H6.2C5.07989 19 4.51984 19 4.09202 18.782C3.71569 18.5903 3.40973 18.2843 3.21799 17.908C3 17.4802 3 16.9201 3 15.8V8.2C3 7.0799 3 6.51984 3.21799 6.09202C3.40973 5.71569 3.71569 5.40973 4.09202 5.21799C4.51984 5 5.0799 5 6.2 5H17.8C18.9201 5 19.4802 5 19.908 5.21799C20.2843 5.40973 20.5903 5.71569 20.782 6.09202C21 6.51984 21 7.0799 21 8.2V12M3 9H21M18 21V15M21 18.0008L15 18"
-            stroke="#23d3ee"
+            d="M19 21V15M16 18H22M22 10H2M22 12V8.2C22 7.0799 22 6.51984 21.782 6.09202C21.5903 5.7157 21.2843 5.40974 20.908 5.21799C20.4802 5 19.9201 5 18.8 5H5.2C4.0799 5 3.51984 5 3.09202 5.21799C2.7157 5.40973 2.40973 5.71569 2.21799 6.09202C2 6.51984 2 7.0799 2 8.2V15.8C2 16.9201 2 17.4802 2.21799 17.908C2.40973 18.2843 2.71569 18.5903 3.09202 18.782C3.51984 19 4.0799 19 5.2 19H12"
+            stroke="#606060"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -41,7 +41,6 @@ export const linksForms = [
         height="25px"
         viewBox="-3.5 0 19 19"
         xmlns="http://www.w3.org/2000/svg"
-       
       >
         <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
         <g
@@ -56,11 +55,11 @@ export const linksForms = [
     ),
   },
   {
-    href: "/AccountForm",
+    href: "/TransactionForm",
     name: "New Transaction",
     image: (
       <svg
-        className="mr-1"
+        className="mr-1 rigth-1"
         width="20px"
         height="20px"
         viewBox="0 0 20 20"
@@ -78,6 +77,73 @@ export const linksForms = [
             d="M11.293 8.293L12.586 7H3v11a1 1 0 11-2 0V2a1 1 0 012 0v3h9.586l-1.293-1.293a1 1 0 011.414-1.414l2.999 2.999a1 1 0 010 1.416l-2.999 2.999A.998.998 0 0111 9a1 1 0 01.293-.707zM18 1a1 1 0 011 1v16a1 1 0 01-2 0v-3H7.414l1.293 1.293a1 1 0 11-1.414 1.414l-2.999-2.999a1 1 0 010-1.416l2.999-2.999a1 1 0 011.414 1.414L7.414 13H17V2a1 1 0 011-1z"
             fill="#959aa3"
           ></path>
+        </g>
+      </svg>
+    ),
+  },
+  {
+    href: "/AccountForm",
+    name: "New Account",
+    image: (
+      <svg
+        className="mr-1"
+        width="20px"
+        height="20px"
+        viewBox="0 0 64 64"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+        <g
+          id="SVGRepo_tracerCarrier"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        ></g>
+        <g id="SVGRepo_iconCarrier">
+          {" "}
+          <g clipPath="url(#clip0_14_1995)">
+            {" "}
+            <path
+              d="M27.865 31.758C33.5972 31.758 38.244 27.1112 38.244 21.379C38.244 15.6468 33.5972 11 27.865 11C22.1328 11 17.486 15.6468 17.486 21.379C17.486 27.1112 22.1328 31.758 27.865 31.758Z"
+              stroke="#606060"
+              strokeWidth="4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            ></path>{" "}
+            <path
+              d="M40 36.346C37.0313 33.3973 33.0142 31.7466 28.83 31.756H26.9C22.6831 31.756 18.6388 33.4312 15.657 36.413C12.6752 39.3948 11 43.4391 11 47.656V52.516H44.73V51.756"
+              stroke="#606060"
+              strokeWidth="4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            ></path>{" "}
+            <path
+              d="M48.621 38.146V46.123"
+              stroke="#0AFCE6"
+              strokeWidth="4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            ></path>{" "}
+            <path
+              d="M52.609 42.134H44.632"
+              stroke="#0AFCE6"
+              strokeWidth="4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            ></path>{" "}
+          </g>{" "}
+          <defs>
+            {" "}
+            <clipPath id="clip0_14_1995">
+              {" "}
+              <rect
+                width="45.609"
+                height="45.516"
+                fill="white"
+                transform="translate(9 9)"
+              ></rect>{" "}
+            </clipPath>{" "}
+          </defs>{" "}
         </g>
       </svg>
     ),

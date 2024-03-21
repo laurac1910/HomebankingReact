@@ -1,6 +1,10 @@
 import React from "react";
 
 const AccountP = ({ number, balance, account }) => {
+  const sortedTransactions = account.transactions.sort((a, b) => b.id - a.id);
+  const lastTenTransactions = sortedTransactions.slice(0, 10);
+
+
   return (
     <section className="flex flex-wrap  ">
       <div className="relative bg-white py-6 px-6 rounded-3xl w-90%  my-4 shadow-xl ">
@@ -47,7 +51,7 @@ const AccountP = ({ number, balance, account }) => {
         </div>
         <div className="flex mb-4">
           <svg
-          className="absolute left-5 "
+            className="absolute left-5 "
             width="35px"
             height="35px"
             viewBox="0 0 24 24"
@@ -89,14 +93,14 @@ const AccountP = ({ number, balance, account }) => {
             <span className="ml-10  mr-5  bg-gris p-1 rounded-md text-white font-medium">
               Balance:
             </span>
-            <span className="text-l font-bold text-gray-700 mr-32 border-2 p-1 rounded-md border-gris ">
+            <span className="text-l font-bold text-gray-700 mr-32 border-2 p-1 rounded-md border-gris text-right">
               {balance}
             </span>
           </p>
         </div>
         <div className="flex ">
           <svg
-          className="mr-2"
+            className="mr-2"
             fill="#14b0dd"
             width="30px"
             height="30px"
@@ -118,24 +122,38 @@ const AccountP = ({ number, balance, account }) => {
             <span className=" bg-gris p-1 rounded-md text-white font-medium ">
               Transactions:
             </span>
-            <div className="text-l font-bold text-gray-700 mt-4 ">
-              {account.transactions.map((transaction) => (
-                <div key={transaction.id}>
-                  <span className="border-2 border-gris p-1 mr-2">
-                    {" "}
-                    Type: {transaction.type}
-                  </span>
-                  <span className="border-2 border-gris p-1 mr-2">
-                    {" "}
-                    Amount:${transaction.amount}{" "}
-                  </span>
-                  <span className="border-2 border-gris p-1">
-                    {" "}
-                    Date: {transaction.creationDate}
-                  </span>
-                </div>
-              ))}
-            </div>
+            <table className="border-collapse border border-gray-400 mt-4">
+              <thead>
+                <tr>
+                  <th className="border border-gray-400 px-4 py-2">Description</th>
+                  <th className="border border-gray-400 px-4 py-2 text-right">
+                    Amount
+                  </th>
+                  <th className="border border-gray-400 px-4 py-2">Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                {lastTenTransactions.map((transaction) => (
+                  <tr key={transaction.id}>
+                    <td className="border border-gray-400 px-4 py-2 w-[30px]">
+                      {transaction.description}
+                    </td>
+                    <td
+                    className={`border border-gray-400 px-4 py-1 text-right ${
+                      transaction.type === "DEBIT" ? "text-red-500" : "text-green-500"
+                    }`}
+                  >
+                    {transaction.type === "DEBIT"
+                      ? "-" + transaction.amountInUSD
+                      : transaction.amountInUSD}
+                  </td>
+                    <td className="border border-gray-400 px-4 py-2">
+                      {transaction.creationDate}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

@@ -1,20 +1,27 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link, useLocation } from 'react-router-dom';
+import classNames from 'classnames';
 import '../assets/anchor.css';
-import { Link  } from 'react-router-dom';
 
-const Anchor = (props) => {
-  
+const Anchor = ({ href, children }) => {
+  const { pathname } = useLocation();
+  const isActive = pathname === href;
+
+  const anchorClasses = classNames('anchor', {
+    'active': isActive
+  });
+
   return (
-    
-      <Link to={props.href} className='anchor' >{props.children}</Link>
-    
-  )
-}
-Anchor.prototypes = {
+    <Link to={href} className={anchorClasses}>
+      {children}
+    </Link>
+  );
+};
+
+Anchor.propTypes = {
   href: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
-  children: PropTypes.any,
- 
-}
-export default Anchor
+  children: PropTypes.node.isRequired,
+};
+
+export default Anchor;
